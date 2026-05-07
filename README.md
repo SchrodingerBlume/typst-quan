@@ -4,9 +4,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.0-blue" alt="version">
-  <img src="https://img.shields.io/badge/license-MIT-green" alt="license">
-  <img src="https://img.shields.io/badge/typst-0.13.0+-orange" alt="typst">
+  <img src="https://img.shields.io/badge/version-0.2.0-blue" alt="Package version: 0.2.0">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT">
+  <img src="https://img.shields.io/badge/typst-0.13.0+-orange" alt="Minimum Typst version: 0.13.0">
 </p>
 
 <p align="center">
@@ -26,11 +26,12 @@ A Typst package for circled numbers. It uses native Unicode circled glyphs (⓪�
 - **Font coverage declaration** — `quan-init` accepts range strings like `"1-20"` or `"1-5,7,9-11"` to declare exactly which glyphs your font provides
 - **Per-range style rules** — `quan-style` lets you tune stroke, radius, inset, baseline, text size and letter-spacing per numeric range
 - **SimSun-tuned defaults** — built-in rules handle single digits (0–9) and the varying visual width of digit pairs from 10 to 99 out of the box; easily overridden for other fonts
+- **Circled footnote markers** — `#show: quan-footnote` turns footnote numbers into circled digits document-wide, matching your `quan-init` / `quan-style` settings
 
 ### Quick Start
 
 ```typst
-#import "@preview/quan:0.1.0": quan, quan-init, quan-style
+#import "@preview/quan:0.2.0": quan, quan-init, quan-style
 
 // Declare your font's circled-digit coverage (default: 1-10)
 #quan-init(digits: "1-20")
@@ -105,6 +106,18 @@ Named arguments update the global default style. Positional arguments are `(rang
 )
 ```
 
+---
+
+#### `quan-footnote` — circled footnote markers
+
+Show-rule wrapper that replaces footnote markers (and entry numbers) with circled numbers globally. Styling follows `quan-init` and `quan-style`.
+
+```typst
+#show: quan-footnote
+
+This is a footnote#footnote[hello]. And another#footnote[world].
+```
+
 ### SimSun Default Rules
 
 The built-in style rules are tuned for **SimSun** (Windows 宋体) and cover 0–99. They adjust `inset` and `kern` based on the visual width of each digit:
@@ -132,11 +145,12 @@ For other fonts, override with `quan-style()` as needed.
 - **声明字体覆盖范围** — `quan-init` 接受 `"1-20"` 或 `"1-5,7,9-11"` 等范围字符串，精确声明字体支持哪些带圈字形
 - **按范围配置样式** — `quan-style` 支持按数字范围分别设置描边、圆角、内边距、基线偏移、字号、字间距
 - **SimSun 开箱即用** — 内置规则针对宋体（SimSun）的字宽特点，覆盖 0–9 单位数及 10–99 数字对，其他字体可通过 `quan-style()` 覆盖
+- **带圈脚注序号** — `#show: quan-footnote` 全局将脚注序号替换为带圈数字，样式跟随 `quan-init` / `quan-style`
 
 ### 快速上手
 
 ```typst
-#import "@preview/quan:0.1.0": quan, quan-init, quan-style
+#import "@preview/quan:0.2.0": quan, quan-init, quan-style
 
 // 声明当前字体支持的带圈数字范围（默认：1-10）
 #quan-init(digits: "1-20")
@@ -209,6 +223,18 @@ For other fonts, override with `quan-style()` as needed.
   ("11-99",  (size: 0.8em)),
   ("100-999", (size: 0.65em, kern: -0.2em)),
 )
+```
+
+---
+
+#### `quan-footnote` — 带圈脚注序号
+
+用于 `show` 规则的包装函数，全局将脚注序号（正文上标与脚注条目）替换为带圈数字。样式跟随 `quan-init` 与 `quan-style` 的设置。
+
+```typst
+#show: quan-footnote
+
+这是一个脚注#footnote[你好]。再来一个#footnote[世界]。
 ```
 
 ### SimSun 默认规则
