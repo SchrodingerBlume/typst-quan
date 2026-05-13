@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.2.0-blue" alt="Package version: 0.2.0">
+  <img src="https://img.shields.io/badge/version-0.2.1-blue" alt="Package version: 0.2.1">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT">
   <img src="https://img.shields.io/badge/typst-0.13.0+-orange" alt="Minimum Typst version: 0.13.0">
 </p>
@@ -31,7 +31,7 @@ A Typst package for circled numbers. It uses native Unicode circled glyphs (⓪�
 ### Quick Start
 
 ```typst
-#import "@preview/quan:0.2.0": quan, quan-init, quan-style
+#import "@preview/quan:0.2.1": quan, quan-init, quan-style
 
 // Declare your font's circled-digit coverage (default: 1-10)
 #quan-init(digits: "1-20")
@@ -90,6 +90,7 @@ Named arguments update the global default style. Positional arguments are `(rang
 | `baseline` | `length` | `-0.06em` | Vertical alignment shift. |
 | `size` | `length` | `0.825em` | Font size of the digit inside the circle. |
 | `kern` | `length` | `-0.075em` | Letter-spacing (`tracking`) of the digit inside the circle. Negative values tighten multi-digit numbers. |
+| `gap` | `length` | `0.1em` | Horizontal spacing appended after each drawn circle, mimicking the natural advance of Unicode glyphs. |
 
 ```typst
 // Change stroke globally
@@ -150,7 +151,7 @@ For other fonts, override with `quan-style()` as needed.
 ### 快速上手
 
 ```typst
-#import "@preview/quan:0.2.0": quan, quan-init, quan-style
+#import "@preview/quan:0.2.1": quan, quan-init, quan-style
 
 // 声明当前字体支持的带圈数字范围（默认：1-10）
 #quan-init(digits: "1-20")
@@ -209,6 +210,7 @@ For other fonts, override with `quan-style()` as needed.
 | `baseline` | `length` | `-0.06em` | 垂直对齐偏移。 |
 | `size` | `length` | `0.825em` | 圈内数字字号。 |
 | `kern` | `length` | `-0.075em` | 圈内数字字间距（`tracking`），负值收紧多位数字。 |
+| `gap` | `length` | `0.1em` | 每个画圈后追加的水平间距，模拟 Unicode 字形自带的字间距。 |
 
 ```typst
 // 全局修改描边
